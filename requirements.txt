@@ -1,9 +1,5 @@
 Django
 gunicorn
 django-heroku
-<<<<<<< HEAD
-django-allauth
-=======
 django-allauth
 django-bootstrap4
->>>>>>> b979e8621f48d2286b045b871a82b259955c48be
