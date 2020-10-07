@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,6 @@ SECRET_KEY = '+qlpz&#3m4j6tz#$z7ednq19_dz)!x1xfgsocjm9f$g+p5u4&='
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 AUTHENTICATION_BACKENDS = [
@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'django.contrib.sites'
-    'allauth'
-    'allauth.account'
-    'allauth.socialaccount'
-    'allauth.socialaccount.providers.google'
+    'django.contrib.sites',
+    'mysite',
+    'bootstrap4',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
@@ -114,6 +115,29 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# google API authentication
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+# google api settings
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+
+# receive user login info after success
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 
 # Internationalization

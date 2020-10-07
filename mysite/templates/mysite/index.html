@@ -1,0 +1,63 @@
+{% load socialaccount %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<html>
+  <head>
+    <title>Virtual Study-Buddy Finder</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Coding Beasts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Find Group</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Tutoring</a>
+      </li>
+    </ul>
+
+    <div class="nav-item">
+      {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }} !</p>
+      {% else %}
+      <a class="nav-link" href="{% provider_login_url 'google' %}">Sign in</a>
+      {% endif %}
+    </div>
+
+  </div>
+</nav>
+<div style="height:25px"></div>
+  <div class="container text-center" style="max-width:750px">
+    <div class="jumbotron">
+  <h1 class="display-4">Welcome!</h1>
+  <p class="lead">The official website for the virtual study-buddy finder app. </p>
+  <hr class="my-4">
+  <p>Brought to you by the coding beasts.</p>
+      {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }} !</p>
+      {% else %}
+      <a class="btn btn-primary btn-lg" href="{% provider_login_url 'google' %}" role="button">Sign in</a>
+      {% endif %}
+  </div>
+
+</div>
+
+
+  </body>
+</html>
