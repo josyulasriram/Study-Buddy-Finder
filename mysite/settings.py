@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_google.apps.DjangoGoogleConfig',
 ]
 
 SITE_ID = 1
