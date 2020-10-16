@@ -1,5 +1,7 @@
-{'% extends 'mysite/base.html' %}
-
-{'% block content %}
-{'{ calendar }}
-{'% endblock %}
+{% extends "mysite/base.html" %}
+{% block head %}
+<head>
+  <link rel="stylesheet" href="mysite/static/mysite/css/styles.css">
+</head>
+{'{ Calendar }}
+{% endblock %}
