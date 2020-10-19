@@ -6,3 +6,4 @@ django-bootstrap4
 google-auth==1.5.0
 google-api-python-client
 oauth2client
+unittest2
