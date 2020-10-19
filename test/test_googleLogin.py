@@ -17,11 +17,3 @@ class TestAuthWithGoogleAuth(unittest.TestCase):
     def tearDown(self):
         _auth.HAS_GOOGLE_AUTH = True
         _auth.HAS_OAUTH2CLIENT = True
-
-    def test_default_credentials(self):
-        with mock.patch("google.auth.default", autospec=True) as default:
-            default.return_value = (mock.sentinel.credentials, mock.sentinel.project)
-
-            credentials = _auth.default_credentials()
-
-            self.assertEqual(credentials, mock.sentinel.credentials)
