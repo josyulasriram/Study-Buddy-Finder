@@ -3,3 +3,5 @@ gunicorn
 django-heroku
 django-allauth
 django-bootstrap4
+google-auth==1.5.0
+google-api-python-client
