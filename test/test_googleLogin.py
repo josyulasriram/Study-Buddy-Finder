@@ -27,6 +27,16 @@ class TestAuthWithGoogleAuth(unittest.TestCase):
             credentials = _auth.credentials_from_file("credentials.json")
 
             self.assertEqual(credentials, mock.sentinel.credentials)
+
+    def test_credentials_from_file(self):
+        with mock.patch(
+            "google.auth.load_credentials_from_file", autospec=True
+        ) as default:
+            default.return_value = (mock.sentinel.credentials, mock.sentinel.project)
+
+            credentials = _auth.credentials_from_file("credentials.json")
+
+            self.assertEqual(credentials, mock.sentinel.credentials)
             default.assert_called_once_with(
                 "credentials.json", scopes=None, quota_project_id=None
             )
