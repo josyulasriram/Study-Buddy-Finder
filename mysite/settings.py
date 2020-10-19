@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'sbuddy.apps.SbuddyConfig',
 ]
 
 SITE_ID = 1
@@ -70,7 +71,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'sbuddy/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
