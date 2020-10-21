@@ -1,0 +1,14 @@
+<body>
+        {% if profile %}
+            <ul>
+                {% for item in profile%}
+                    <li>
+                    <div>
+                        <h4>Name: {{item.name}}<h4>
+                        Strengths: {{item.strengths}}
+                    </div>
+                    </li>
+                    {% endfor %}
+            </ul>
+        {% endif %}
+</body>

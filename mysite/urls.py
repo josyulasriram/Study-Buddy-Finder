@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from . import calendar
+from . import views
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+
 
 from django.views.generic import TemplateView
 
@@ -25,5 +26,8 @@ urlpatterns = [
  path('', TemplateView.as_view(template_name="mysite/index.html")),
  path('admin/', admin.site.urls),
  path('accounts/', include('allauth.urls')),
- url(r'^calendar/$', calendar.CalendarView.as_view(), name='mysite'),
+ path('user/', TemplateView.as_view(template_name="mysite/form.html")),
+ path('user/user_upload', views.user_upload, name = "user_upload"),
+ path('user/profile', views.profile, name='profile'),
+
 ]

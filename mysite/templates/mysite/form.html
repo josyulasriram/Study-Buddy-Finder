@@ -1,0 +1,23 @@
+<form action="user_upload" method="post">
+    {% csrf_token %}
+    <label for="name">Your name: </label>
+    <input id="name" type="text" name="name" value="">
+
+    <br></br>
+
+    <label for="strengths"> Strengths: </label>
+    <input id="strengths" type="text" name="strengths" value="">
+
+
+    <br></br>
+    <label for="interests"> Interests: </label>
+    <input id="interests" type="text" name="interests" value="">
+    <br></br>
+
+    <label for="schedule"> Schedule Upload: </label>
+    <input id="schedule" type="file" name="interests" accept = "application/pdf">
+    <br></br>
+
+    <input type="submit" value="Submit">
+
+</form>

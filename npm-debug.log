@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'bower' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData bower
+8 silly fetchNamedPackageData bower
+9 silly mapToRegistry name bower
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/bower
+13 verbose request uri https://registry.npmjs.org/bower
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 11:57:30 AM
+16 verbose request id 254f5b70e25781ce
+17 verbose etag W/"1cbf2ff24c73b4c4fcdff7e2a5b7e229"
+18 verbose lastModified Fri, 26 Jun 2020 20:55:24 GMT
+19 http request GET https://registry.npmjs.org/bower
+20 http 304 https://registry.npmjs.org/bower
+21 verbose headers { date: 'Mon, 19 Oct 2020 15:57:31 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'set-cookie':
+21 verbose headers    [ '__cfduid=df13e0c00e8a46700173bde1e82e51fe91603123051; expires=Wed, 18-Nov-20 15:57:31 GMT; path=/; domain=.npmjs.org; HttpOnly; SameSite=Lax' ],
+21 verbose headers   'cf-ray': '5e4bb1ff0b76f0fe-IAD',
+21 verbose headers   age: '3362',
+21 verbose headers   'cache-control': 'public, max-age=300',
+21 verbose headers   etag: '"1cbf2ff24c73b4c4fcdff7e2a5b7e229"',
+21 verbose headers   'last-modified': 'Fri, 26 Jun 2020 20:55:24 GMT',
+21 verbose headers   vary: 'Accept-Encoding',
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'cf-request-id': '05e32d93650000f0fee7935000000001',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Mon, 19 Oct 2020 15:57:31 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'set-cookie':
+22 silly get      [ '__cfduid=df13e0c00e8a46700173bde1e82e51fe91603123051; expires=Wed, 18-Nov-20 15:57:31 GMT; path=/; domain=.npmjs.org; HttpOnly; SameSite=Lax' ],
+22 silly get     'cf-ray': '5e4bb1ff0b76f0fe-IAD',
+22 silly get     age: '3362',
+22 silly get     'cache-control': 'public, max-age=300',
+22 silly get     etag: '"1cbf2ff24c73b4c4fcdff7e2a5b7e229"',
+22 silly get     'last-modified': 'Fri, 26 Jun 2020 20:55:24 GMT',
+22 silly get     vary: 'Accept-Encoding',
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'cf-request-id': '05e32d93650000f0fee7935000000001',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/bower from cache
+24 verbose get saving bower to /home/sriram/.npm/registry.npmjs.org/bower/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule bower@1.8.8 checking installable status
+38 silly cache add args [ 'bower', null ]
+39 verbose cache add spec bower
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'bower',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'bower',
+40 silly cache add   rawSpec: '',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed bower@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for bower
+43 info addNameTag [ 'bower', 'latest' ]
+44 silly mapToRegistry name bower
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/bower
+48 verbose addNameTag registry:https://registry.npmjs.org/bower not in flight; fetching
+49 verbose get https://registry.npmjs.org/bower not expired, no request
+50 silly addNameTag next cb for bower with tag latest
+51 silly addNamed bower@1.8.8
+52 verbose addNamed "1.8.8" is a plain semver version for bower
+53 warn deprecated bower@1.8.8: We don't recommend using Bower for new projects. Please consider Yarn and Webpack or Parcel. You can read how to migrate legacy project here: https://bower.io/blog/2017/how-to-migrate-away-from-bower/
+54 silly cache afterAdd bower@1.8.8
+55 verbose afterAdd /home/sriram/.npm/bower/1.8.8/package/package.json not in flight; writing
+56 verbose afterAdd /home/sriram/.npm/bower/1.8.8/package/package.json written
+57 silly loadAllDepsIntoIdealTree Finishing
+58 silly idealTree:prePrune lib
+58 silly idealTree:prePrune └── bower@1.8.8
+59 silly loadIdealTree Finishing
+60 silly currentTree lib
+61 silly idealTree lib
+61 silly idealTree └── bower@1.8.8
+62 silly generateActionsToTake Starting
+63 silly install generateActionsToTake
+64 warn checkPermissions Missing write access to /usr/local/lib
+65 silly rollbackFailedOptional Starting
+66 silly rollbackFailedOptional Finishing
+67 silly runTopLevelLifecycles Starting
+68 silly runTopLevelLifecycles Finishing
+69 silly install printInstalled
+70 verbose stack Error: EACCES: permission denied, access '/usr/local/lib'
+71 verbose cwd /mnt/c/Users/josyu/project-1-09
+72 error Linux 4.4.0-19041-Microsoft
+73 error argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "bower"
+74 error node v8.10.0
+75 error npm  v3.5.2
+76 error path /usr/local/lib
+77 error code EACCES
+78 error errno -13
+79 error syscall access
+80 error Error: EACCES: permission denied, access '/usr/local/lib'
+80 error  { Error: EACCES: permission denied, access '/usr/local/lib'
+80 error   errno: -13,
+80 error   code: 'EACCES',
+80 error   syscall: 'access',
+80 error   path: '/usr/local/lib' }
+81 error Please try running this command again as root/Administrator.
+82 verbose exit [ -13, true ]
