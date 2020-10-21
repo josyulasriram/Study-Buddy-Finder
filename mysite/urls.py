@@ -26,8 +26,12 @@ urlpatterns = [
  path('', TemplateView.as_view(template_name="mysite/index.html")),
  path('admin/', admin.site.urls),
  path('accounts/', include('allauth.urls')),
- path('user/', TemplateView.as_view(template_name="mysite/form.html")),
- path('user/user_upload', views.user_upload, name = "user_upload"),
- #path('user/profile', views.profile, name='profile'),
+ path('user/',views.user_upload,name="user_upload"),
+ path('profiles/',views.profile,name="profile"),
+
+
+ #path('user/', TemplateView.as_view(template_name="mysite/form.html")),
+ #path('user/user_upload', views.user_upload, name = "user_upload"),
+ 
 
 ]
