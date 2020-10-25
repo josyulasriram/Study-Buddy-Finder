@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_google.apps.DjangoGoogleConfig',
+    'sbuddy.apps.SbuddyConfig',
 ]
 
 SITE_ID = 1
