@@ -2,6 +2,8 @@ from django.shortcuts import reverse, redirect, render
 from .models import User
 from .forms import UserForm
 from django.http import HttpResponseRedirect
+from django.core.files.storage import FileSystemStorage
+
 
 def profile(request):
     users = User.objects.all()
@@ -12,8 +14,8 @@ def user_upload(request):
         user = UserForm(request.POST,request.FILES)
         if user.is_valid():
             user.save()
-            return HttpResponseRedirect(reverse('sbuddy:profile'))
+            return redirect('sbuddy:profile')
     else:
         user = UserForm()
-
     return render(request, 'sbuddy/form.html',{'user':user})
+
