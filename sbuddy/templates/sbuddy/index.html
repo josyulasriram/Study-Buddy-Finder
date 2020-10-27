@@ -24,11 +24,17 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Find Group</a>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:user_upload' %}">Create User</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Tutoring</a>
+        <a class="nav-link" href="{% url 'sbuddy:profile' %}">View Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
       </li>
     </ul>
 
