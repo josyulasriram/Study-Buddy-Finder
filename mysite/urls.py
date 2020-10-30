@@ -20,4 +20,5 @@ from django.conf.urls import url
 urlpatterns = [
  path('', include('sbuddy.urls')),
  path('admin/', admin.site.urls),
+ path('accounts/', include('allauth.urls')),
 ]
