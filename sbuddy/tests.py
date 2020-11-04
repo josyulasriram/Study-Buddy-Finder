@@ -48,3 +48,4 @@ class UserModelTests(TestCase):
 
         self.assertIs(views.do_items_match(person.skills[0], person2.skills[2]), False)
         
+    
