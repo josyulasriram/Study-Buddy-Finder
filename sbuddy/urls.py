@@ -28,6 +28,8 @@ urlpatterns = [
  path('profiles/',views.profile,name="profile"),
  path('matches/strengths/', views.match_users_by_strengths, name="match_strengths"),
  path('matches/skills/', views.match_users_by_skills, name="match_skills"),
+ path('user_profile/', views.user_profile, name='user_profile'),
+
 ]
 
 if settings.DEBUG:
