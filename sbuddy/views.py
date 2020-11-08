@@ -1,5 +1,5 @@
 from django.shortcuts import reverse, redirect, render
-from .models import Person
+from .models import Person, Profile
 from .forms import UserForm, UserUpdateForm, ProfileUpdateForm
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'sbuddy/index.html')
 
 def profile(request):
-    users = Person.objects.all()
+    users = Profile.objects.all()
     return render(request, 'sbuddy/profile.html', {'users': users})
 
 def user_upload(request):
@@ -24,7 +24,7 @@ def user_upload(request):
     return render(request, 'sbuddy/form.html', {'user': user})
 
 def match_users_by_strengths(request):
-    users = Person.objects.all()
+    users = Profile.objects.all()
     matches = []
     for userA in users:
         strengthsA = userA.strengths.split(',')
