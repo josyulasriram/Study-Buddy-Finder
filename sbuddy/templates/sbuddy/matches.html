@@ -1,3 +1,4 @@
+{% extends 'sbuddy/base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,43 +15,18 @@
 {% bootstrap_messages %}
 
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coding Beasts</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:user_upload' %}">Create User</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:profile' %}">View Users</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
-      </li>
-    </ul>
 
-  </div>
-</nav>
-
+{% block content %}
 <style>
     .form {
         margin-right: 15%;
         margin-left: 15%;
     }
     
+    
 </style>
-
-    <div class="form jumbotron">
+<body>
+    <div class="form jumbotron mid">
         <h2 class="text-center" style="padding-bottom:25px"> User Matches (By Strengths) </h2>
         <table class="table">
             <thead>
@@ -75,7 +51,5 @@
         </table>
     </div>
 </body>
-
 </head>
-
-</html>
+{% endblock %}

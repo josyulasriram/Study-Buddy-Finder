@@ -23,7 +23,7 @@ from django.views.generic import TemplateView
 
 app_name = 'sbuddy'
 urlpatterns = [
- path('', TemplateView.as_view(template_name="sbuddy/index.html")),
+ path('', views.index, name='index'),
  path('user/',views.user_upload,name="user_upload"),
  path('profiles/',views.profile,name="profile"),
  path('matches/strengths/', views.match_users_by_strengths, name="match_strengths"),

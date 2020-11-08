@@ -9,9 +9,9 @@
 {% bootstrap_messages %}
 
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coding Beasts</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'sbuddy:index' %}">Coding Beasts</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,14 +30,21 @@
         <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
+        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
       </li>
     </ul>
 
   </div>
 </nav>
 
-<div class='col-md-8 jumbotron text-center'>
+<div class="container text-center">
+  <style>
+      .form {
+          margin-right: 15%;
+          margin-left: 15%;
+      }
+      
+  </style>
   {% block content %}
   {% endblock  %}
 </div>

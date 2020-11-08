@@ -6,7 +6,8 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-
+def index(request):
+    return render(request, 'sbuddy/index.html')
 
 def profile(request):
     users = Person.objects.all()
