@@ -178,3 +178,5 @@ try:
     django_heroku.settings(locals())
 except ImportError:
     found = False
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
