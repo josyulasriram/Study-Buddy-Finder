@@ -1,12 +1,16 @@
 from django.shortcuts import reverse, redirect, render
-from .models import User
-from .forms import UserForm
+from .models import Person, Profile
+from .forms import UserForm, UserUpdateForm, ProfileUpdateForm
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
+def index(request):
+    return render(request, 'sbuddy/index.html')
 
 def profile(request):
-    users = User.objects.all()
+    users = Profile.objects.all()
     return render(request, 'sbuddy/profile.html', {'users': users})
 
 def user_upload(request):
@@ -20,7 +24,7 @@ def user_upload(request):
     return render(request, 'sbuddy/form.html', {'user': user})
 
 def match_users_by_strengths(request):
-    users = User.objects.all()
+    users = Profile.objects.all()
     matches = []
     for userA in users:
         strengthsA = userA.strengths.split(',')
@@ -35,7 +39,7 @@ def match_users_by_strengths(request):
 
 
 def match_users_by_skills(request):
-    users = User.objects.all()
+    users = Person.objects.all()
     matches = []
     for userA in users:
         skillsA = userA.skills.split(',')
@@ -55,4 +59,26 @@ def do_items_match(a, b):
                 return True
     return False
 
+@login_required
+def user_profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('sbuddy:user_profile')
 
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+
+    return render(request, 'sbuddy/user_profile.html', context)

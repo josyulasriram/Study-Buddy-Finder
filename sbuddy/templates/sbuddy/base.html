@@ -1,5 +1,4 @@
 {% load socialaccount %}
-{# Load the tag library #}
 {% load bootstrap4 %}
 
 {# Load CSS and JavaScript #}
@@ -9,13 +8,10 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
-<html>
-  <head>
-    <title>Virtual Study-Buddy Finder</title>
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coding Beasts</a>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'sbuddy:index' %}">Coding Beasts</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,13 +20,39 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Find Group</a>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:user_upload' %}">Create User</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 'sbuddy:profile' %}">View Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Tutoring</a>
+        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
       </li>
     </ul>
-
+    <div class="navbar-nav">
+      {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'sbuddy:user_profile' %}">Profile</a>
+        {% comment %} <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> {% endcomment %}
+      {% endif %}
+    </div>
   </div>
 </nav>
+
+<div class="container text-center">
+  <style>
+      .form {
+          margin-right: 15%;
+          margin-left: 15%;
+      }
+      
+  </style>
+  {% block content %}
+  {% endblock  %}
+</div>

@@ -1,3 +1,4 @@
+{% extends 'sbuddy/base.html' %}
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -8,45 +9,9 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
-<html>
-  <head>
-    <title>Virtual Study-Buddy Finder</title>
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coding Beasts</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link disabled" href="{% url 'sbuddy:user_upload' %}">Create User</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
-      </li>
-    </ul>
-
-  </div>
-</nav>
-
-<style>
-    .form {
-        margin-right: 15%;
-        margin-left: 15%;
-    }
-    
-</style>
-
-<body>
-    <div class="form jumbotron text-center ">
+{% block content %}
+<div class="container text-center" style="max-width:750px">
+    <div class="jumbotron">
         <h2 align='center' style="padding-bottom:15px"> Create User Profile </h2>
         {% bootstrap_messages%}
         <div class='justify-content-center'>
@@ -60,4 +25,6 @@
             </form>
         </div>
     </div>
-</body>
+</div>
+
+{% endblock content %}

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'sbuddy.apps.SbuddyConfig',
+    'crispy_forms',
 ]
 
 SITE_ID = 1
@@ -177,3 +178,5 @@ try:
     django_heroku.settings(locals())
 except ImportError:
     found = False
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
