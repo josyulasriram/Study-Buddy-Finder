@@ -1,17 +1,22 @@
 from django.shortcuts import reverse, redirect, render
-from .models import Person, Profile
+from .models import Profile
 from .forms import UserForm, UserUpdateForm, ProfileUpdateForm
-from django.http import HttpResponseRedirect
-from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 
 def index(request):
     return render(request, 'sbuddy/index.html')
 
+
 def profile(request):
     users = Profile.objects.all()
     return render(request, 'sbuddy/profile.html', {'users': users})
+
+
+def logout(request):
+    logout(request)
+
 
 def user_upload(request):
     if request.method == 'POST':
@@ -23,34 +28,58 @@ def user_upload(request):
         user = UserForm()
     return render(request, 'sbuddy/form.html', {'user': user})
 
+
 def match_users_by_strengths(request):
     users = Profile.objects.all()
     matches = []
-    for userA in users:
-        strengthsA = userA.strengths.split(',')
-        for userB in users:
-            if userB.name != userA.name:
-                strengthsB = userB.strengths.split(',')
-                if do_items_match(strengthsA, strengthsB):
-                    match = (userA, userB)
+    for user_a in users:
+        strengths_a = user_a.strengths.split(',')
+        for user_b in users:
+            if user_b.name != user_a.name:
+                weak_b = user_b.weaknesses.split(',')
+                if do_items_match(strengths_a, weak_b):
+                    match = (user_a, user_b)
                     matches.append(match)
 
     return render(request, 'sbuddy/matches.html', {'matches': matches})
 
 
-def match_users_by_skills(request):
-    users = Person.objects.all()
+def match_users_by_availability(request):
+    users = Profile.objects.all()
     matches = []
-    for userA in users:
-        skillsA = userA.skills.split(',')
-        for userB in users:
-            if userB.name != userA.name:
-                skillsB = userB.skills.split(',')
-                if do_items_match(skillsA, skillsB):
-                    match = (userA, userB)
+    for user_a in users:
+        for user_b in users:
+            if user_b.name != user_a.name:
+                if user_a.availability == user_b.availability:
+                    match = (user_a, user_b)
                     matches.append(match)
 
-    return render(request, 'sbuddy/matches_skill.html', {'matches': matches})
+    return render(request, 'sbuddy/matches_time.html', {'matches': matches})
+
+def get_user_matches(request):
+    current = request.user.profile
+    profiles = Profile.objects.all()
+    matches = []
+
+    for profile in profiles:
+        if profile.name != current.name:
+            p_strengths = profile.strengths.split(',')
+            c_weak = current.weaknesses.split(',')
+            for strength in p_strengths:
+                for weak in c_weak:
+                    if strength == weak:
+                        match = (0, weak, profile)
+                        matches.append(match)
+
+            p_weak = profile.weaknesses.split(',')
+            c_strength = current.strengths.split(',')
+            for strength2 in c_strength:
+                for weak2 in p_weak:
+                    if strength2 == weak2:
+                        match = (1, weak2, profile)
+                        matches.append(match)
+    return render(request, 'sbuddy/user_matches.html', {'matches': matches})
+
 
 def do_items_match(a, b):
     for item in a:

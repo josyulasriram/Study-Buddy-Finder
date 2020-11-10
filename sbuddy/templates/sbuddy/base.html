@@ -21,25 +21,25 @@
         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:user_upload' %}">Create User</a>
-      </li>
-        <li class="nav-item">
         <a class="nav-link " href="{% url 'sbuddy:profile' %}">View Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match Strengths</a>
+        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match by Strengths</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:match_skills' %}">Match Skills</a>
+        <a class="nav-link" href="{% url 'sbuddy:match_time' %}">Match by Availability</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:user_matches' %}">Find Study Buddies</a>
       </li>
     </ul>
     <div class="navbar-nav">
       {% if user.is_authenticated %}
         <a class="nav-item nav-link" href="{% url 'sbuddy:user_profile' %}">Profile</a>
-        {% comment %} <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        <a class="nav-item nav-link" href="{% url 'account_logout' %}">Logout</a>
       {% else %}
-        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a> {% endcomment %}
+        <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'account_login' %}">Register</a>
       {% endif %}
     </div>
   </div>
