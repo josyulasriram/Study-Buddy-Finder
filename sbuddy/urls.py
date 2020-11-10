@@ -19,7 +19,6 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
 
 app_name = 'sbuddy'
 urlpatterns = [
@@ -27,8 +26,9 @@ urlpatterns = [
  path('user/',views.user_upload,name="user_upload"),
  path('profiles/',views.profile,name="profile"),
  path('matches/strengths/', views.match_users_by_strengths, name="match_strengths"),
- path('matches/skills/', views.match_users_by_skills, name="match_skills"),
  path('user_profile/', views.user_profile, name='user_profile'),
+ path('matches/time/', views.match_users_by_availability, name='match_time'),
+ path('matches/user/', views.get_user_matches, name='user_matches'),
 
 ]
 

@@ -1,0 +1,59 @@
+{% extends 'sbuddy/base.html' %}
+<title>Virtual Study-Buddy Finder</title>
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+{% block content %}
+<style>
+    .form {
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+
+
+</style>
+<body>
+    <div class="form jumbotron mid">
+        <h1 class="text-center display-4" style="padding-bottom:25px"> Find Study Buddies</h1>
+        <p>Find people to study with and get matched based on your strengths and weaknesses.</p>
+        <br>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Needs Help</th>
+                    <th class="text-center">Best Available Time</th>
+                    <th class="text-center">Meeting Link</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for match in matches %}
+                <tr>
+                    <td class="text-center">{{ match.2.name }}</td>
+                    {% if match.0 == 0 %}
+                    <td class="text-center">No</td>
+                    {% else %}
+                    <td class="text-center">Yes</td>
+                    {% endif %}
+                    <td class="text-center">{{ match.1 }}</td>
+                    <td class="text-center"><a href="{{ match.2.meetingURL }}">{{ match.2.meetingURL }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</head>
+{% endblock %}

@@ -1,5 +1,15 @@
-{% extends "sbuddy/base.html" %}
+{% extends 'sbuddy/base.html' %}
 {% load crispy_forms_tags %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 {% block content %}
 <div class="container text-center jumbotron" style="max-width:750px">
     <div class="content-section">

@@ -28,7 +28,7 @@
         {% if user.is_authenticated %}
         <p>Welcome, {{ user.username }} !</p>
         {% else %}
-        <a class="btn btn-primary btn-lg" href="{% provider_login_url 'google' %}" role="button">Sign in</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'account_login' %}" role="button">Sign in</a>
         {% endif %}
     </div>
 </div>
