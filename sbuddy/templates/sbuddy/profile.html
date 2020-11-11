@@ -19,8 +19,8 @@
                 <tr>
                 <th>Name</th>
                 <th>Strengths</th>
-                <th>Skills</th>
-                <th>Schedule</th>
+                <th>Weaknesses</th>
+                <th>Availability</th>
                 </tr>
             </thead>
 
@@ -29,12 +29,8 @@
                 <tr>
                     <td class="text-center">{{ user.name }}</td>
                     <td class="text-center">{{ user.strengths }}</td>
-                    <td class="text-center">{{ user.skills }}</td>
-                    <td class="text-center">
-                        <a href="{{ user.schedule.url }}" class = "btn btn-primary btn-small">
-                            Download Schedule
-                        </a>
-                </td>
+                    <td class="text-center">{{ user.weaknesses }}</td>
+                    <td class="text-center">{{ user.availability }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
