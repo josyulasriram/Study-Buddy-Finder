@@ -7,7 +7,7 @@ from .models import Profile
 class UserForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'name', 'meetingURL', 'strengths', 'weaknesses', 'availability']
+        fields = ['image', 'name', 'meetingURL', 'strengths', 'weaknesses', 'availability','phone_number']
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -21,4 +21,4 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'name', 'meetingURL', 'strengths', 'weaknesses', 'availability']
+        fields = ['image', 'name', 'meetingURL', 'strengths', 'weaknesses', 'availability','phone_number']
