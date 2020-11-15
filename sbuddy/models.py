@@ -1,3 +1,5 @@
+import os
+from twilio.rest import Client
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
@@ -44,15 +46,47 @@ class Profile(models.Model):
         default='Monday Morning',
     )
 
+    phone_number = models.CharField(max_length=20)
+
     def __str__(self):
         return f'{self.user.username} Profile'
 
     def save(self, *args, **kwargs):
         super(Profile,self).save(*args,**kwargs)
-
         img = Image.open(self.image.path)
-
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+        account_sid = os.environ['TWILIO_ACCOUNT_SID']
+        auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        client = Client(account_sid, auth_token)
+
+        message = client.messages.create(
+                                        body='Welcome to the Study Buddy App',
+                                        from_='+13157549860',
+                                        to=self.phone_number
+                                        )
+
+            
+        
+
+class Score(models.Model):
+    result = models.PositiveIntegerField()
+
+    def __str__(self):
+        return str(self.result)
+    def save(self,*args,**kwargs):
+        if self.result < 70:
+            account_sid = os.environ['TWILIO_ACCOUNT_SID']
+            auth_token = os.environ['TWILIO_AUTH_TOKEN']
+            client = Client(account_sid, auth_token)
+
+            message = client.messages.create(
+                                            body='Hi there!',
+                                            from_='+13157549860',
+                                            to='+15715999055'
+                                            )
+
+            print(message.sid)
+        return super().save(*args,**kwargs)
