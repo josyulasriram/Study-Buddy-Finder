@@ -59,8 +59,8 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
         if self.phone_number:
-            account_sid = os.environ['TWILIO_ACCOUNT_SID']#'ACcbf1b53b4f4f0d9bbb92a1304d3aaa76'os.environ['TWILIO_ACCOUNT_SID']
-            auth_token = os.environ['TWILIO_AUTH_TOKEN']#'ec8302fef58f3ebf9ddead86fb8ea18d'#os.environ['TWILIO_AUTH_TOKEN']
+            account_sid = 'ACcbf1b53b4f4f0d9bbb92a1304d3aaa76'
+            auth_token = 'ec8302fef58f3ebf9ddead86fb8ea18d'
             client = Client(account_sid, auth_token)
             message = client.messages.create(
                                             body='Welcome to the Study Buddy App',
