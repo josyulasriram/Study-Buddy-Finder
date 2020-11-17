@@ -58,35 +58,37 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
-        account_sid = os.environ['TWILIO_ACCOUNT_SID']
-        auth_token = os.environ['TWILIO_AUTH_TOKEN']
-        client = Client(account_sid, auth_token)
+        if self.phone_number:
+            account_sid = os.environ['TWILIO_ACCOUNT_SID']#'ACcbf1b53b4f4f0d9bbb92a1304d3aaa76'os.environ['TWILIO_ACCOUNT_SID']
+            auth_token = os.environ['TWILIO_AUTH_TOKEN']#'ec8302fef58f3ebf9ddead86fb8ea18d'#os.environ['TWILIO_AUTH_TOKEN']
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                                            body='Welcome to the Study Buddy App',
+                                            from_='+13157549860',
+                                            to=self.phone_number
+                                             )
 
-        message = client.messages.create(
-                                        body='Welcome to the Study Buddy App',
-                                        from_='+13157549860',
-                                        to=self.phone_number
-                                        )
-
-            
-        
 
 class Score(models.Model):
     result = models.PositiveIntegerField()
 
     def __str__(self):
         return str(self.result)
-    def save(self,*args,**kwargs):
+
+    def save(self, *args, **kwargs):
         if self.result < 70:
             account_sid = os.environ['TWILIO_ACCOUNT_SID']
             auth_token = os.environ['TWILIO_AUTH_TOKEN']
             client = Client(account_sid, auth_token)
 
             message = client.messages.create(
-                                            body='Hi there!',
-                                            from_='+13157549860',
-                                            to='+15715999055'
-                                            )
+                              body='Hi there!',
+                              from_='+13157549860',
+                              to='+15715999055'
+                          )
 
             print(message.sid)
-        return super().save(*args,**kwargs)
+        return super().save(*args, **kwargs)
+
+            
+    
