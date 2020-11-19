@@ -5,10 +5,10 @@ install:
 - pip install -r requirements-travis.txt
 script:
 - python manage.py test
-deploy:
-  provider: heroku
-  api_key:
-    secure: RmqCW6kVUV3BbzFbeWIvQXzxgIa9ZDa7UeW1u4EyM6+XLn3eTQmAPpDN9Nb49GrXQQc6XNFAd+i6JnRCcpsZJh63rp6UM3Yq65lqySucwjv4Sud1Ob82o170X1qwXCpFp8kVJVY90/1CP8eSWuCdOABtivCz5MlhyuISZGnt8GJg2+Hkulq8E9fUu7lRkM9gcyEivXuArtOodVEJt5QC+pHKVFz4KDMQTFlyOH0SAM/oAPS18dorzr0NJQsgSHedqXfB0P16ZhenqRNwxXmn5ZYln89YMcOio5h1CQOJFp/0StfuuhDGlMjl5rzgMTuvGgyEwO9KH3b+gHje6Ra1eJ7IePZ4AwJaBKS818bVWitphIrEbegDHISdwj69SGgikbdrX/itiEYWvXL9BMTPWtQ/wnAonQ7zFkyqRJmDC1t0cVdif2e9rAMbCIbp6U3xsFVilCU3IIJnJaX0JRyY+g+rHdhO07yCha8RAFrc8vris0oW01l7ufB2p9uQsM3O2LpMoBHmh7LmSMMlOucMRaULaNYhf46zPafUozR2dueqg5fqzpw9xMrkq9UsxGmJyfvl+j6/IQo/c+iJlqvQNA68vdbfcLKPN2XUosxGJEWDYnxRk4OQWVKJ+as1OC5PBqpGEj+FK7cowiE910v1EkaPaMSPW37K103wju+oq8E=
-  app: project-team-1-09
-  on:
-    repo: uva-cs3240-f20/project-1-09
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: RmqCW6kVUV3BbzFbeWIvQXzxgIa9ZDa7UeW1u4EyM6+XLn3eTQmAPpDN9Nb49GrXQQc6XNFAd+i6JnRCcpsZJh63rp6UM3Yq65lqySucwjv4Sud1Ob82o170X1qwXCpFp8kVJVY90/1CP8eSWuCdOABtivCz5MlhyuISZGnt8GJg2+Hkulq8E9fUu7lRkM9gcyEivXuArtOodVEJt5QC+pHKVFz4KDMQTFlyOH0SAM/oAPS18dorzr0NJQsgSHedqXfB0P16ZhenqRNwxXmn5ZYln89YMcOio5h1CQOJFp/0StfuuhDGlMjl5rzgMTuvGgyEwO9KH3b+gHje6Ra1eJ7IePZ4AwJaBKS818bVWitphIrEbegDHISdwj69SGgikbdrX/itiEYWvXL9BMTPWtQ/wnAonQ7zFkyqRJmDC1t0cVdif2e9rAMbCIbp6U3xsFVilCU3IIJnJaX0JRyY+g+rHdhO07yCha8RAFrc8vris0oW01l7ufB2p9uQsM3O2LpMoBHmh7LmSMMlOucMRaULaNYhf46zPafUozR2dueqg5fqzpw9xMrkq9UsxGmJyfvl+j6/IQo/c+iJlqvQNA68vdbfcLKPN2XUosxGJEWDYnxRk4OQWVKJ+as1OC5PBqpGEj+FK7cowiE910v1EkaPaMSPW37K103wju+oq8E=
+#   app: project-team-1-09
+#   on:
+#     repo: uva-cs3240-f20/project-1-09

@@ -8,3 +8,5 @@ oauth2client
 unittest2
 django-heroku
 crispy-forms
+pillow
+twilio
