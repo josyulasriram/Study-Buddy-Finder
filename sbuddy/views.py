@@ -60,7 +60,6 @@ def get_user_matches(request):
     current = request.user.profile
     profiles = Profile.objects.all()
     matches = []
-
     for profile in profiles:
         if profile.name != current.name:
             p_strengths = profile.strengths.split(',')

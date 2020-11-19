@@ -1,3 +1,5 @@
+import os
+from twilio.rest import Client
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
@@ -60,8 +62,8 @@ class Profile(models.Model):
             send_sms.send_text(self.phone, "You successfully changed your phone number on Virtual Study-Buddy Finder!")
 
         img = Image.open(self.image.path)
-
         # verify image size
+
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
@@ -69,7 +71,6 @@ class Profile(models.Model):
 
         super(Profile, self).save(*args, **kwargs)
         self.__original_phone = self.phone
-
 
 
 
