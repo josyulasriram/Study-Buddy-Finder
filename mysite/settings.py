@@ -37,6 +37,12 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 
 ]
+
+TWILIO_ACCOUNT_SID = "AC5874e26480e8bb02c1d0d03bd7908283"
+TWILIO_AUTH_TOKEN = "1fe94d62d5d7e0e9ec903e47b71965e8"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,8 +57,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'django_google.apps.DjangoGoogleConfig',
     'sbuddy.apps.SbuddyConfig',
+    'crispy_forms',
+    'phonenumber_field',
 ]
 
 SITE_ID = 1
@@ -178,3 +185,5 @@ try:
     django_heroku.settings(locals())
 except ImportError:
     found = False
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

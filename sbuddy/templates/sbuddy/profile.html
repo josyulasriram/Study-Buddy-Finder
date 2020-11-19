@@ -1,4 +1,4 @@
-
+{% extends 'sbuddy/base.html' %}
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -9,68 +9,32 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
-<html>
-  <head>
-    <title>Virtual Study-Buddy Finder</title>
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coding Beasts</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Find Group</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Tutoring</a>
-      </li>
-    </ul>
 
-  </div>
-</nav>
-
-<style>
-    .form {
-        margin-right: 15%;
-        margin-left: 15%;
-    }
-    
-</style>
-
+{% block content %}
 <body>
-    <div class="form jumbotron">
-        <h2> Profile List </h2>
+    <div class="container text-center jumbotron" style="max-width:750px">
+        <h2 class="text-center" style="padding-bottom:25px"> User Profiles </h2>
         <table class="table">
             <thead>
                 <tr>
                 <th>Name</th>
                 <th>Strengths</th>
-                <th>Skills</th>
-                <th>Schedule</th>
+                <th>Weaknesses</th>
+                <th>Availability</th>
                 </tr>
             </thead>
 
             <tbody>
                 {% for user in users %} 
                 <tr>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.strengths }}</td>
-                    <td>{{ user.skills }}</td>
-                    <td>
-                        <a href="{{ user.schedule.url }}" class = "btn btn-primary btn-small">
-                            Download Schedule
-                        </a>
-                        
-                </td>
+                    <td class="text-center">{{ user.name }}</td>
+                    <td class="text-center">{{ user.strengths }}</td>
+                    <td class="text-center">{{ user.weaknesses }}</td>
+                    <td class="text-center">{{ user.availability }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </body>
+{% endblock%}

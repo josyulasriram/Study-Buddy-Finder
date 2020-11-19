@@ -1,0 +1,53 @@
+{% extends 'sbuddy/base.html' %}
+<title>Virtual Study-Buddy Finder</title>
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+{% block content %}
+<style>
+    .form {
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+    
+    
+</style>
+<body>
+    <div class="form jumbotron mid">
+        <h1 class="text-center display-4" style="padding-bottom:25px"> Match Users by Availability</h1>
+        <p>Perform system-wide matching on all users based on their common availability.</p>
+        <br>
+        <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                <th class="text-center">user_a</th>
+                <th class="text-center">user_b</th>
+                <th class="text-center">time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for match in matches %}
+                <tr>
+                    <td class="text-center">{{ match.0.name }}</td>
+                    <td class="text-center">{{ match.1.name }}</td>
+                    <td class="text-center">{{ match.1.availability }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</head>
+{% endblock %}

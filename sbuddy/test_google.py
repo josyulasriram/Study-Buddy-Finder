@@ -8,7 +8,6 @@ import unittest2 as unittest
 
 from googleapiclient import _auth
 
-
 class TestAuthWithGoogleAuth(unittest.TestCase):
     def setUp(self):
         _auth.HAS_GOOGLE_AUTH = True
