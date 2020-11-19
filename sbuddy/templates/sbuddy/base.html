@@ -29,9 +29,11 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'sbuddy:match_time' %}">Match by Availability</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'sbuddy:user_matches' %}">Find Study Buddies</a>
-      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'sbuddy:user_matches' %}">Find Study Buddies</a>
+        </li>
+      {% endif %}
     </ul>
     <div class="navbar-nav">
       {% if user.is_authenticated %}
@@ -39,7 +41,7 @@
         <a class="nav-item nav-link" href="{% url 'account_logout' %}">Logout</a>
       {% else %}
         <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
-        <a class="nav-item nav-link" href="{% url 'account_login' %}">Register</a>
+        <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
       {% endif %}
     </div>
   </div>

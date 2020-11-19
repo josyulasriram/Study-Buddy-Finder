@@ -24,7 +24,7 @@
 <body>
     <div class="form jumbotron mid">
         <h1 class="text-center display-4" style="padding-bottom:25px"> Find Study Buddies</h1>
-        <p>Find people to study with and get matched based on your strengths and weaknesses.</p>
+        <p>Find your study buddy matches here! They are matched based on your common strengths and weaknesses.</p>
         <br>
         <br>
 
@@ -33,7 +33,8 @@
                 <tr>
                     <th class="text-center">Name</th>
                     <th class="text-center">Needs Help</th>
-                    <th class="text-center">Best Available Time</th>
+                    <th class="text-center">Subject</th>
+                    <th class="text-center">Availability</th>
                     <th class="text-center">Meeting Link</th>
                 </tr>
             </thead>
@@ -48,7 +49,12 @@
                     <td class="text-center">Yes</td>
                     {% endif %}
                     <td class="text-center">{{ match.1 }}</td>
+                    <td class="text-center">{{ match.2.availability }}</td>
+                    {% if match.2.meetingURL == '' %}
+                    <td class="text-center"><p href="{{ match.2.meetingURL }}">N/A</p></td>
+                    {% else %}
                     <td class="text-center"><a href="{{ match.2.meetingURL }}">{{ match.2.meetingURL }}</a></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
