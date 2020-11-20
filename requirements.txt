@@ -10,3 +10,4 @@ django-heroku
 django-crispy-forms
 pillow
 twilio
+django-phonenumber-field[phonenumbers]
