@@ -1,0 +1,63 @@
+{% load socialaccount %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'sbuddy:index' %}">Coding Beasts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 'sbuddy:profile' %}">View Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match by Strengths</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_time' %}">Match by Availability</a>
+      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'sbuddy:user_matches' %}">Find Study Buddies</a>
+        </li>
+      {% endif %}
+    </ul>
+    <div class="navbar-nav">
+      {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'sbuddy:user_profile' %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'account_logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<div class="container text-center">
+    <h1>Sign out</h1>
+<p class="lead">Are you sure you want to sign out?</p>
+    <br>
+    <br>
+<div class="text-center container" style="max-width:650px">
+    <form class="form-signin" method="POST" action="/accounts/logout/">
+        {% csrf_token %}
+      <button type="submit" class="btn btn-lg btn-block btn-primary">Sign out</button>
+    </form>
+</div>
+</div>

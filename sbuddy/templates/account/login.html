@@ -1,0 +1,74 @@
+{% load socialaccount %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'sbuddy:index' %}">Coding Beasts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link " href="{% url 'sbuddy:profile' %}">View Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_strengths' %}">Match by Strengths</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'sbuddy:match_time' %}">Match by Availability</a>
+      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'sbuddy:user_matches' %}">Find Study Buddies</a>
+        </li>
+      {% endif %}
+    </ul>
+    <div class="navbar-nav">
+      {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'sbuddy:user_profile' %}">Profile</a>
+        <a class="nav-item nav-link" href="{% url 'account_logout' %}">Logout</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{% url 'account_login' %}">Login</a>
+        <a class="nav-item nav-link" href="{% url 'account_signup' %}">Register</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<br>
+<br>
+<div class="text-center container" style="max-width:650px">
+    <form class="form-signin" method="POST" action="/accounts/login/">
+        {% csrf_token %}
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <br>
+
+      <label for="id_login" class="sr-only">Username:</label>
+      <input type="text" required id="id_login" class="form-control" placeholder="Username" name="login" maxlength="150" required autofocus>
+      <br>
+      <label for="id_password" class="sr-only">Password</label>
+      <input type="password" name="password" required id="id_password" class="form-control" placeholder="Password" required>
+        <br>
+        <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <br>
+      <a href="/accounts/password/reset">Forgot password?</a>
+      <br>
+      <br>
+        <a class="btn btn-lg btn-primary btn-block socialaccount_provider google" id="google_login" href="/accounts/google/login/">Sign in with Google</a>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+ </form>
+</div>
+
+

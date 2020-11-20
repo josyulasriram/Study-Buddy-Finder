@@ -1,8 +1,10 @@
 import os
 from twilio.rest import Client
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 from PIL import Image
+from sbuddy import send_sms
 
 
 class Profile(models.Model):
@@ -29,6 +31,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     name = models.CharField(max_length=100, blank=False, default='')
+    phone = models.CharField(max_length=12, blank=False, default='')
     meetingURL = models.CharField(max_length=100, blank=False, default='')
     strengths = models.CharField(
         max_length=255,
@@ -46,47 +49,29 @@ class Profile(models.Model):
         default='Monday Morning',
     )
 
-    phone_number = models.CharField(max_length=20)
+    def __init__(self, *args, **kwargs):
+        super(Profile, self).__init__(*args, **kwargs)
+        self.__original_phone = self.phone
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
     def save(self, *args, **kwargs):
-        super(Profile,self).save(*args,**kwargs)
+        # check if phone number updated
+        if self.__original_phone is None or self.phone != self.__original_phone:
+            send_sms.send_text(self.phone, "You successfully changed your phone number on Virtual Study-Buddy Finder!")
+
         img = Image.open(self.image.path)
+        # verify image size
+
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
-        account_sid = os.environ['TWILIO_ACCOUNT_SID']
-        auth_token = os.environ['TWILIO_AUTH_TOKEN']
-        client = Client(account_sid, auth_token)
 
-        message = client.messages.create(
-                                        body='Welcome to the Study Buddy App',
-                                        from_='+13157549860',
-                                        to=self.phone_number
-                                        )
+        super(Profile, self).save(*args, **kwargs)
+        self.__original_phone = self.phone
 
-            
-        
 
-class Score(models.Model):
-    result = models.PositiveIntegerField()
 
-    def __str__(self):
-        return str(self.result)
-    def save(self,*args,**kwargs):
-        if self.result < 70:
-            account_sid = os.environ['TWILIO_ACCOUNT_SID']
-            auth_token = os.environ['TWILIO_AUTH_TOKEN']
-            client = Client(account_sid, auth_token)
 
-            message = client.messages.create(
-                                            body='Hi there!',
-                                            from_='+13157549860',
-                                            to='+15715999055'
-                                            )
-
-            print(message.sid)
-        return super().save(*args,**kwargs)
