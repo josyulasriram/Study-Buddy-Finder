@@ -9,3 +9,5 @@ unittest2
 django-crispy-forms
 pillow
 twilio
+django-phonenumber-field
+django-phonenumber-field[phonenumbers]
