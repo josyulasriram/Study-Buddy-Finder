@@ -13,3 +13,10 @@ OR
 (2b) Visit our public app hosted on https://project-team-1-09.herokuapp.com
 
 - Coding Beasts
+
+General Instructions for Using the App
+
+1) Sign into the app using either Google Login or sign up with a new account
+2) Once logged in, change your Profile settings(top right) with email, zoom meeting id, phone number etc.
+3) Explore the different tabs on the top to see which users you have been paired with depending on the criteria
+
