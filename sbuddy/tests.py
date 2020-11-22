@@ -34,18 +34,18 @@ class UserModelTests(TestCase):
         person = User()
         person.skills = "English, Writing"
 
-    #     person2 = User()
-    #     person2.skills = "Reading, Communication"
+        person2 = User()
+        person2.skills = "Reading, Communication"
 
-    #     self.assertIs(views.do_items_match(person.skills[0], person2.skills[0]), False)
+        self.assertIs(views.do_items_match(person.skills[0], person2.skills[0]), False)
 
-    # def test_match_skills(self):
-    #     person = User()
-    #     person.skills = "English, Writing, Mathematics"
+    def test_match_skills(self):
+        person = User()
+        person.skills = "English, Writing, Mathematics"
 
-    #     person2 = User()
-    #     person2.skills = "Reading, Communication, English"
+        person2 = User()
+        person2.skills = "Reading, Communication, English"
 
-    #     self.assertIs(views.do_items_match(person.skills[0], person2.skills[2]), False)
+        self.assertIs(views.do_items_match(person.skills[0], person2.skills[2]), False)
         
     
