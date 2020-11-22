@@ -11,3 +11,4 @@ pillow
 twilio
 django-phonenumber-field
 django-phonenumber-field[phonenumbers]
+phonenumbers
