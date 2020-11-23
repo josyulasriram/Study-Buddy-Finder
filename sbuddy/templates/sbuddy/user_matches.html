@@ -15,8 +15,8 @@
 {% block content %}
 <style>
     .form {
-        margin-right: 15%;
-        margin-left: 15%;
+        margin-right: 10%;
+        margin-left: 10%;
     }
 
 
@@ -36,6 +36,7 @@
                     <th class="text-center">Subject</th>
                     <th class="text-center">Availability</th>
                     <th class="text-center">Meeting Link</th>
+                    <th class="text-center">Send SMS Invite</th>
                 </tr>
             </thead>
 
@@ -54,6 +55,11 @@
                     <td class="text-center"><p href="{{ match.2.meetingURL }}">N/A</p></td>
                     {% else %}
                     <td class="text-center"><a href="{{ match.2.meetingURL }}">{{ match.2.meetingURL }}</a></td>
+                    {% endif %}
+                    {% if match.2.phone == '' %}
+                    <td class="text-center"><p>N/A</p></td>
+                    {% else %}
+                    <td class="text-center"><a class="btn btn-primary" href="/invite/{{ match.2.phone }}/">Invite</a></td>
                     {% endif %}
                 </tr>
                 {% endfor %}
