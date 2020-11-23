@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'sbuddy.apps.SbuddyConfig',
     'crispy_forms',
-    'phonenumber_field',
 ]
 
 SITE_ID = 1

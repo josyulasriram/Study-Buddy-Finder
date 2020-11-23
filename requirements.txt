@@ -7,6 +7,9 @@ google-api-python-client
 oauth2client
 unittest2
 django-heroku
-crispy-forms
+django-crispy-forms
 pillow
 twilio
+django-phonenumber-field[phonenumbers]
+django-phone-field
+phonenumbers
