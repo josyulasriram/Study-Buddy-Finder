@@ -1,8 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import reverse, redirect, render
 from .models import Profile
 from .forms import UserForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from sbuddy import send_sms
 
 
 def index(request):
@@ -78,6 +80,16 @@ def get_user_matches(request):
                         match = (1, weak2, profile)
                         matches.append(match)
     return render(request, 'sbuddy/user_matches.html', {'matches': matches})
+
+
+def invite_user(request, phone):
+    print("phone invite: " + phone)
+    current = request.user.profile
+    if current.meetingURL != '':
+        if phone != '':
+            send_sms.send_text(phone, "You've been invited to a study group! " + current.meetingURL)
+
+    return HttpResponseRedirect(reverse('sbuddy:user_matches'))
 
 
 def do_items_match(a, b):

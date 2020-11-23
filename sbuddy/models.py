@@ -1,7 +1,6 @@
 import os
 from twilio.rest import Client
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 from PIL import Image
 from sbuddy import send_sms

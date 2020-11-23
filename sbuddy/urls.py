@@ -29,6 +29,8 @@ urlpatterns = [
  path('user_profile/', views.user_profile, name='user_profile'),
  path('matches/time/', views.match_users_by_availability, name='match_time'),
  path('matches/user/', views.get_user_matches, name='user_matches'),
+ path('invite/<str:phone>/', views.invite_user, name='invite_user'),
+
 
 ]
 
