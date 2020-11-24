@@ -14,6 +14,10 @@ class Profile(models.Model):
         ('Physics','Physics'),
         ('Computer Science','Computer Science'),
         ('Economics','Economics'),
+        ('Engineering', 'Engineering'),
+        ('Statistics', 'Statistics'),
+        ('Psychology', 'Psychology'),
+        ('Business', 'Business'),
         )
     SCHEDULE_CHOICES = [
         ("Monday Morning", "Monday Morning"),
