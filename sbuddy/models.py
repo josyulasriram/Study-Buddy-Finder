@@ -28,7 +28,7 @@ class Profile(models.Model):
         ("Friday Afternoon", "Friday Afternoon"),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    # image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     name = models.CharField(max_length=100, blank=False, default='')
     phone = models.CharField(max_length=12, blank=False, default='')
     meetingURL = models.CharField(max_length=100, blank=False, default='')
@@ -60,13 +60,13 @@ class Profile(models.Model):
         if self.__original_phone is None or self.phone != self.__original_phone:
             send_sms.send_text(self.phone, "You successfully changed your phone number on Virtual Study-Buddy Finder!")
 
-        img = Image.open(self.image.path)
-        # verify image size
+        # img = Image.open(self.image.path)
+        # # verify image size
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+        # if img.height > 300 or img.width > 300:
+        #     output_size = (300, 300)
+        #     img.thumbnail(output_size)
+        #     img.save(self.image.path)
 
         super(Profile, self).save(*args, **kwargs)
         self.__original_phone = self.phone
